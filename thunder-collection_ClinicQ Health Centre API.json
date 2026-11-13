@@ -1,0 +1,269 @@
+{
+    "clientName": "Thunder Client",
+    "collectionName": "ClinicQ Health Centre API",
+    "collectionId": "b3598278-6b3d-47d9-9ad4-10ebe8e9bb4e",
+    "dateExported": "2026-11-13T04:23:17.058Z",
+    "version": "1.4",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "bf72d6f6-9418-4d10-b370-b8e02ba930f6",
+            "colId": "b3598278-6b3d-47d9-9ad4-10ebe8e9bb4e",
+            "containerId": "",
+            "name": "Get All Doctors",
+            "url": "http://localhost:3000/doctors",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2026-11-12T16:41:12.905Z",
+            "modified": "2026-11-12T16:41:12.905Z",
+            "headers": []
+        },
+        {
+            "_id": "8e09d62e-25d9-4299-98f2-aa9d4e720b2c",
+            "colId": "b3598278-6b3d-47d9-9ad4-10ebe8e9bb4e",
+            "containerId": "",
+            "name": "Add New Doctor",
+            "url": "http://localhost:3000/doctors",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2026-11-12T16:59:13.974Z",
+            "modified": "2026-11-12T16:59:13.974Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": [
+                    "{",
+                    "  \"doctor_name\": \"Dr. Priya\",",
+                    "  \"specialization\": \"Cardiologist\"",
+                    "}"
+                ],
+                "form": []
+            }
+        },
+        {
+            "_id": "1f128911-3507-48c4-8477-b99abc28b588",
+            "colId": "b3598278-6b3d-47d9-9ad4-10ebe8e9bb4e",
+            "containerId": "",
+            "name": "Add New Room",
+            "url": "http://localhost:3000/rooms",
+            "method": "POST",
+            "sortNum": 30000,
+            "created": "2026-11-12T17:07:45.343Z",
+            "modified": "2026-11-12T17:07:45.343Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": [
+                    "{",
+                    "  \"name\": \"Room 4\",",
+                    "  \"floor\": 2",
+                    "}"
+                ],
+                "form": []
+            }
+        },
+        {
+            "_id": "2f51e43c-119e-45b5-9859-e0b40d71f425",
+            "colId": "b3598278-6b3d-47d9-9ad4-10ebe8e9bb4e",
+            "containerId": "",
+            "name": "Get All Rooms",
+            "url": "http://localhost:3000/rooms",
+            "method": "GET",
+            "sortNum": 40000,
+            "created": "2026-11-12T17:10:22.817Z",
+            "modified": "2026-11-12T17:10:22.817Z",
+            "headers": []
+        },
+        {
+            "_id": "f1877cd7-b642-4516-82a2-cf4a517279b3",
+            "colId": "b3598278-6b3d-47d9-9ad4-10ebe8e9bb4e",
+            "containerId": "",
+            "name": "Get Room by ID",
+            "url": "http://localhost:3000/rooms/3",
+            "method": "GET",
+            "sortNum": 50000,
+            "created": "2026-11-12T17:13:17.653Z",
+            "modified": "2026-11-12T17:13:17.653Z",
+            "headers": []
+        },
+        {
+            "_id": "31fc66e5-8f75-4a39-aef6-bdbba4f6b9f7",
+            "colId": "b3598278-6b3d-47d9-9ad4-10ebe8e9bb4e",
+            "containerId": "",
+            "name": "Update Room",
+            "url": "http://localhost:3000/rooms/3",
+            "method": "PUT",
+            "sortNum": 60000,
+            "created": "2026-11-12T17:16:37.868Z",
+            "modified": "2026-11-12T17:16:37.868Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": [
+                    "{",
+                    "  \"name\": \"Room 4 Updated\",",
+                    "  \"floor\": 3",
+                    "}"
+                ],
+                "form": []
+            }
+        },
+        {
+            "_id": "6630fefd-0f35-4a2e-a1c1-66469fa97940",
+            "colId": "b3598278-6b3d-47d9-9ad4-10ebe8e9bb4e",
+            "containerId": "",
+            "name": "Get All Bookings",
+            "url": "http://localhost:3000/bookings",
+            "method": "GET",
+            "sortNum": 70000,
+            "created": "2026-11-12T17:18:34.686Z",
+            "modified": "2026-11-12T17:18:34.686Z",
+            "headers": []
+        },
+        {
+            "_id": "70ed0ae0-1f7e-474f-95e3-56309317b64a",
+            "colId": "b3598278-6b3d-47d9-9ad4-10ebe8e9bb4e",
+            "containerId": "",
+            "name": "Get Available Rooms - Booked Date",
+            "url": "http://localhost:3000/rooms/available?date=2026-11-11",
+            "method": "GET",
+            "sortNum": 80000,
+            "created": "2026-11-12T17:19:30.413Z",
+            "modified": "2026-11-12T17:19:30.413Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "date",
+                    "value": "2026-11-11",
+                    "isPath": false
+                }
+            ]
+        },
+        {
+            "_id": "576cb42c-8bf7-48c6-9868-611fbc73801a",
+            "colId": "b3598278-6b3d-47d9-9ad4-10ebe8e9bb4e",
+            "containerId": "",
+            "name": "Get Available Rooms - Free Date",
+            "url": "http://localhost:3000/rooms/available?date=2026-11-13",
+            "method": "GET",
+            "sortNum": 90000,
+            "created": "2026-11-12T17:20:27.434Z",
+            "modified": "2026-11-12T17:20:27.434Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "date",
+                    "value": "2026-11-13",
+                    "isPath": false
+                }
+            ]
+        },
+        {
+            "_id": "99f07e49-923c-488d-a313-b3b2d1008988",
+            "colId": "b3598278-6b3d-47d9-9ad4-10ebe8e9bb4e",
+            "containerId": "",
+            "name": "Create New Booking",
+            "url": "http://localhost:3000/bookings",
+            "method": "POST",
+            "sortNum": 100000,
+            "created": "2026-11-12T17:22:41.606Z",
+            "modified": "2026-11-12T17:22:41.606Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": [
+                    "{",
+                    "  \"doctor_id\": 1,",
+                    "  \"room_id\": 3,",
+                    "  \"start_date\": \"2026-11-15\",",
+                    "  \"end_date\": \"2026-11-17\"",
+                    "}"
+                ],
+                "form": []
+            }
+        },
+        {
+            "_id": "d64458ce-9515-46b8-9fed-993155d40de6",
+            "colId": "b3598278-6b3d-47d9-9ad4-10ebe8e9bb4e",
+            "containerId": "",
+            "name": "Test Invalid Booking Dates",
+            "url": "http://localhost:3000/bookings",
+            "method": "POST",
+            "sortNum": 110000,
+            "created": "2026-11-12T17:24:00.310Z",
+            "modified": "2026-11-12T17:24:00.310Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": [
+                    "{",
+                    "  \"doctor_id\": 1,",
+                    "  \"room_id\": 3,",
+                    "  \"start_date\": \"2026-11-20\",",
+                    "  \"end_date\": \"2026-11-15\"",
+                    "}"
+                ],
+                "form": []
+            }
+        },
+        {
+            "_id": "3a813537-7db0-43f5-96f9-6b02b6cddb2e",
+            "colId": "b3598278-6b3d-47d9-9ad4-10ebe8e9bb4e",
+            "containerId": "",
+            "name": "Test Booking Conflict",
+            "url": "http://localhost:3000/bookings",
+            "method": "POST",
+            "sortNum": 120000,
+            "created": "2026-11-12T17:25:19.707Z",
+            "modified": "2026-11-12T17:25:19.707Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": [
+                    "{",
+                    "  \"doctor_id\": 1,",
+                    "  \"room_id\": 1,",
+                    "  \"start_date\": \"2026-11-11\",",
+                    "  \"end_date\": \"2026-11-12\"",
+                    "}"
+                ],
+                "form": []
+            }
+        },
+        {
+            "_id": "e321b528-eb1e-4d3c-b1f5-620f2dfcc96d",
+            "colId": "b3598278-6b3d-47d9-9ad4-10ebe8e9bb4e",
+            "containerId": "",
+            "name": "Verify Updated Room",
+            "url": "http://localhost:3000/rooms/3",
+            "method": "GET",
+            "sortNum": 130000,
+            "created": "2026-11-12T17:51:57.879Z",
+            "modified": "2026-11-12T17:51:57.879Z",
+            "headers": []
+        },
+        {
+            "_id": "1a115b03-d868-4e62-8a87-53a0d8025f08",
+            "colId": "b3598278-6b3d-47d9-9ad4-10ebe8e9bb4e",
+            "containerId": "",
+            "name": "Delete Test Room",
+            "url": "http://localhost:3000/rooms/4",
+            "method": "DELETE",
+            "sortNum": 140000,
+            "created": "2026-11-12T18:00:11.997Z",
+            "modified": "2026-11-12T18:00:11.997Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": [
+                    "{",
+                    "  \"name\": \"Delete Test Room\",",
+                    "  \"floor\": 5",
+                    "}"
+                ],
+                "form": []
+            }
+        }
+    ],
+    "ref": "kADECTDnZDuoLfRQ9snjpLyDh3rX1c7tFfI5Z_nS3NnUR2b2YmiTzBa0KvxiVjeRt_RwpdeaF7HuY9J6w9bdqw"
+}
