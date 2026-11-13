@@ -2,7 +2,7 @@
     "clientName": "Thunder Client",
     "collectionName": "ClinicQ Health Centre API",
     "collectionId": "b3598278-6b3d-47d9-9ad4-10ebe8e9bb4e",
-    "dateExported": "2026-11-13T04:23:17.058Z",
+    "dateExported": "2026-11-13T05:04:28.100Z",
     "version": "1.4",
     "folders": [],
     "requests": [
@@ -175,8 +175,8 @@
                     "{",
                     "  \"doctor_id\": 1,",
                     "  \"room_id\": 3,",
-                    "  \"start_date\": \"2026-11-15\",",
-                    "  \"end_date\": \"2026-11-17\"",
+                    "  \"start_date\": \"2026-11-20\",",
+                    "  \"end_date\": \"2026-11-22\"",
                     "}"
                 ],
                 "form": []
@@ -199,8 +199,8 @@
                     "{",
                     "  \"doctor_id\": 1,",
                     "  \"room_id\": 3,",
-                    "  \"start_date\": \"2026-11-20\",",
-                    "  \"end_date\": \"2026-11-15\"",
+                    "  \"start_date\": \"2026-11-25\",",
+                    "  \"end_date\": \"2026-11-20\"",
                     "}"
                 ],
                 "form": []
@@ -222,9 +222,9 @@
                 "raw": [
                     "{",
                     "  \"doctor_id\": 1,",
-                    "  \"room_id\": 1,",
-                    "  \"start_date\": \"2026-11-11\",",
-                    "  \"end_date\": \"2026-11-12\"",
+                    "  \"room_id\": 3,",
+                    "  \"start_date\": \"2026-11-21\",",
+                    "  \"end_date\": \"2026-11-23\"",
                     "}"
                 ],
                 "form": []
@@ -252,18 +252,8 @@
             "sortNum": 140000,
             "created": "2026-11-12T18:00:11.997Z",
             "modified": "2026-11-12T18:00:11.997Z",
-            "headers": [],
-            "body": {
-                "type": "json",
-                "raw": [
-                    "{",
-                    "  \"name\": \"Delete Test Room\",",
-                    "  \"floor\": 5",
-                    "}"
-                ],
-                "form": []
-            }
+            "headers": []
         }
     ],
-    "ref": "kADECTDnZDuoLfRQ9snjpLyDh3rX1c7tFfI5Z_nS3NnUR2b2YmiTzBa0KvxiVjeRt_RwpdeaF7HuY9J6w9bdqw"
+    "ref": "kADECTDnZDuoLfRQ9snjpLyDh3rX1c7tFfI5Z_nS3NmkoT8I7-aE_eikU42B-cHMKmLHx0ftE0SsZ9waPIpwZg"
 }
