@@ -1,0 +1,999 @@
+{
+  "info": {
+    "_postman_id": "74c468a1-608f-49ba-8eb4-e30b3556c5fa",
+    "name": "ClinicQ Health Centre API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "60142879",
+    "_collection_link": "https://go.postman.co/collection/60142879-74c468a1-608f-49ba-8eb4-e30b3556c5fa?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Get All Doctors",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "\r\npm.test(\"Status code is 200\", function () {\r\n    pm.response.to.have.status(200);\r\n});\r\n\r\npm.test(\"Response contains doctors\", function () {\r\n    const response = pm.response.json();\r\n\r\n    pm.expect(response.success).to.eql(true);\r\n    pm.expect(response).to.have.property(\"doctors\");\r\n    pm.expect(response.doctors).to.be.an(\"array\");\r\n});\r\n\r\npm.test(\"Doctor count is correct\", function () {\r\n    const response = pm.response.json();\r\n\r\n    pm.expect(response.count).to.eql(3);\r\n});\r\n"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/doctors",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "doctors"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get Doctor By ID",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "\r\npm.test(\"Status code is 200\", function () {\r\n    pm.response.to.have.status(200);\r\n});\r\n\r\npm.test(\"Doctor details are returned\", function () {\r\n    const response = pm.response.json();\r\n\r\n    pm.expect(response.success).to.eql(true);\r\n    pm.expect(response).to.have.property(\"doctor\");\r\n});\r\n\r\npm.test(\"Doctor information is correct\", function () {\r\n    const response = pm.response.json();\r\n\r\n    pm.expect(response.doctor.doctor_id).to.eql(5);\r\n    pm.expect(response.doctor.name).to.eql(\"Dr. Ananya Rao\");\r\n});\r\n"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/doctors/1",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "doctors",
+            "1"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Update Doctor",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"name\": \"Dr. Ananya Rao\",\r\n    \"specialization\": \"Neurology\",\r\n    \"phone\": \"9876543299\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/doctors/4",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "doctors",
+            "4"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Delete Doctor",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "\r\npm.test(\"Status code is 200\", function () {\r\n    pm.response.to.have.status(200);\r\n});\r\n\r\npm.test(\"Doctor deletion successful\", function () {\r\n    const response = pm.response.json();\r\n\r\n    pm.expect(response.success).to.eql(true);\r\n    pm.expect(response.message).to.eql(\"Doctor deleted successfully\");\r\n});\r\n\r\npm.test(\"Deletion confirmation is returned\", function () {\r\n    const response = pm.response.json();\r\n\r\n    pm.expect(response).to.have.property(\"message\");\r\n});\r\n"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"name\": \"Dr. Kiran Kumar\",\r\n    \"specialization\": \"Orthopedics\",\r\n    \"phone\": \"9998887776\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/doctors/8",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "doctors",
+            "8"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Add Room",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "\r\npm.test(\"Status code is 201\", function () {\r\n    pm.response.to.have.status(201);\r\n});\r\n\r\npm.test(\"Room creation successful\", function () {\r\n    const response = pm.response.json();\r\n\r\n    pm.expect(response.success).to.eql(true);\r\n    pm.expect(response.message).to.eql(\"Room added successfully\");\r\n});\r\n\r\npm.test(\"Room ID is returned\", function () {\r\n    const response = pm.response.json();\r\n\r\n    pm.expect(response.roomId).to.be.a(\"number\");\r\n});\r\n"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"name\": \"Room 7\",\r\n    \"floor\": 3,\r\n    \"status\": \"Available\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/rooms",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "rooms"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get All Rooms",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "\r\npm.test(\"Status code is 200\", function () {\r\n    pm.response.to.have.status(200);\r\n});\r\n\r\npm.test(\"Response contains rooms\", function () {\r\n    const response = pm.response.json();\r\n\r\n    pm.expect(response.success).to.eql(true);\r\n    pm.expect(response).to.have.property(\"rooms\");\r\n    pm.expect(response.rooms).to.be.an(\"array\");\r\n});\r\n\r\npm.test(\"Room count is correct\", function () {\r\n    const response = pm.response.json();\r\n\r\n    pm.expect(response.count).to.eql(5);\r\n});\r\n"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/rooms",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "rooms"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get Room By ID",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r\n    pm.response.to.have.status(200);\r\n});\r\n\r\npm.test(\"Room details are returned\", function () {\r\n    const response = pm.response.json();\r\n\r\n    pm.expect(response.success).to.eql(true);\r\n    pm.expect(response).to.have.property(\"room\");\r\n});\r\n\r\npm.test(\"Room information is correct\", function () {\r\n    const response = pm.response.json();\r\n\r\n    pm.expect(response.room.room_id).to.eql(1);\r\n    pm.expect(response.room.name).to.eql(\"Room 1\");\r\n    pm.expect(response.room.floor).to.eql(1);\r\n});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/rooms/1",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "rooms",
+            "1"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Update Room",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r\n    pm.response.to.have.status(200);\r\n});\r\n\r\npm.test(\"Room updated successfully\", function () {\r\n    const response = pm.response.json();\r\n    pm.expect(response.success).to.eql(true);\r\n});\r\n\r\npm.test(\"Success message is returned\", function () {\r\n    const response = pm.response.json();\r\n    pm.expect(response.message).to.eql(\"Room updated successfully\");\r\n});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"name\": \"Room 1\",\r\n    \"floor\": 1,\r\n    \"status\": \"Available\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/rooms/1",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "rooms",
+            "1"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Add Booking",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status code is 201\", function () {\r\n    pm.response.to.have.status(201);\r\n});\r\n\r\npm.test(\"Booking created successfully\", function () {\r\n    const response = pm.response.json();\r\n\r\n    pm.expect(response.success).to.eql(true);\r\n    pm.expect(response.message).to.eql(\"Booking created successfully\");\r\n});\r\n\r\npm.test(\"Booking ID is returned\", function () {\r\n    const response = pm.response.json();\r\n\r\n    pm.expect(response.bookingId).to.be.a(\"number\");\r\n});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"doctor_id\": 1,\r\n    \"room_id\": 5,\r\n    \"start_date\": \"2026-12-10\",\r\n    \"end_date\": \"2026-12-12\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/bookings",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "bookings"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Delete Room",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r\n    pm.response.to.have.status(200);\r\n});\r\n\r\npm.test(\"Room deleted successfully\", function () {\r\n    const response = pm.response.json();\r\n    pm.expect(response.success).to.eql(true);\r\n});\r\n\r\npm.test(\"Success message is returned\", function () {\r\n    const response = pm.response.json();\r\n    pm.expect(response.message).to.eql(\"Room deleted successfully\");\r\n});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/rooms/10",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "rooms",
+            "10"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get All Bookings",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "\r\npm.test(\"Status code is 200\", function () {\r\n    pm.response.to.have.status(200);\r\n});\r\n\r\npm.test(\"Response contains bookings\", function () {\r\n    const response = pm.response.json();\r\n\r\n    pm.expect(response.success).to.eql(true);\r\n    pm.expect(response).to.have.property(\"bookings\");\r\n    pm.expect(response.bookings).to.be.an(\"array\");\r\n});\r\n\r\npm.test(\"Bookings count is valid\", function () {\r\n    const response = pm.response.json();\r\n\r\n    pm.expect(response.count).to.be.a(\"number\");\r\n    pm.expect(response.count).to.be.above(0);\r\n});\r\n"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/bookings",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "bookings"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get Booking By ID",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r\n    pm.response.to.have.status(200);\r\n});\r\n\r\npm.test(\"Booking details are returned\", function () {\r\n    const response = pm.response.json();\r\n    pm.expect(response.success).to.eql(true);\r\n    pm.expect(response).to.have.property(\"booking\");\r\n});\r\n\r\npm.test(\"Correct booking ID is returned\", function () {\r\n    const response = pm.response.json();\r\n    pm.expect(response.booking.booking_id).to.eql(1);\r\n});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/bookings/1",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "bookings",
+            "1"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Update Booking",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r\n    pm.response.to.have.status(200);\r\n});\r\n\r\npm.test(\"Booking updated successfully\", function () {\r\n    const response = pm.response.json();\r\n    pm.expect(response.success).to.eql(true);\r\n});\r\n\r\npm.test(\"Success message is returned\", function () {\r\n    const response = pm.response.json();\r\n    pm.expect(response.message).to.eql(\"Booking updated successfully\");\r\n});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"doctor_id\": 1,\r\n    \"room_id\": 1,\r\n    \"start_date\": \"2026-11-10\",\r\n    \"end_date\": \"2026-11-12\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/bookings/1",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "bookings",
+            "1"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Delete Booking",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r\n    pm.response.to.have.status(200);\r\n});\r\n\r\npm.test(\"Booking deleted successfully\", function () {\r\n    var response = pm.response.json();\r\n    pm.expect(response.success).to.eql(true);\r\n});\r\n\r\npm.test(\"Success message is returned\", function () {\r\n    var response = pm.response.json();\r\n    pm.expect(response.message).to.eql(\"Booking deleted successfully\");\r\n});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/bookings/10",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "bookings",
+            "10"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get Booking Details With Doctor And Room",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "\r\npm.test(\"Status code is 200\", function () {\r\n    pm.response.to.have.status(200);\r\n});\r\n\r\npm.test(\"Response contains booking details\", function () {\r\n    const response = pm.response.json();\r\n\r\n    pm.expect(response.success).to.eql(true);\r\n    pm.expect(response).to.have.property(\"bookingDetails\");\r\n    pm.expect(response.bookingDetails).to.be.an(\"array\");\r\n});\r\n\r\npm.test(\"Booking details contain doctor and room information\", function () {\r\n    const response = pm.response.json();\r\n\r\n    pm.expect(response.count).to.eql(4);\r\n\r\n    pm.expect(response.bookingDetails[0]).to.have.property(\"doctor_name\");\r\n    pm.expect(response.bookingDetails[0]).to.have.property(\"room_name\");\r\n    pm.expect(response.bookingDetails[0]).to.have.property(\"specialization\");\r\n});\r\n"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/booking-details",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "booking-details"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Test Doctor Validation",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status code is 400\", function () {\r\n    pm.response.to.have.status(400);\r\n});\r\n\r\npm.test(\"Validation error is returned\", function () {\r\n    var response = pm.response.json();\r\n    pm.expect(response.success).to.eql(false);\r\n});\r\n\r\npm.test(\"Phone validation message is returned\", function () {\r\n    var response = pm.response.json();\r\n    pm.expect(response.message).to.eql(\"Name, specialization and phone are required\");\r\n});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"name\": \"Dr. Test\",\r\n    \"specialization\": \"Cardiology\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/doctors",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "doctors"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Test Invalid Doctor Phone",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status code is 400\", function () {\r\n    pm.response.to.have.status(400);\r\n});\r\n\r\npm.test(\"Invalid phone is rejected\", function () {\r\n    var response = pm.response.json();\r\n    pm.expect(response.success).to.eql(false);\r\n});\r\n\r\npm.test(\"Correct validation message is returned\", function () {\r\n    var response = pm.response.json();\r\n    pm.expect(response.message).to.eql(\"Phone number must contain exactly 10 digits\");\r\n});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"name\": \"Dr. Test\",\r\n    \"specialization\": \"Cardiology\",\r\n    \"phone\": \"12345\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/doctors",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "doctors"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Test Room Validation",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status code is 400\", function () {\r\n    pm.response.to.have.status(400);\r\n});\r\n\r\npm.test(\"Invalid room data is rejected\", function () {\r\n    var response = pm.response.json();\r\n    pm.expect(response.success).to.eql(false);\r\n});\r\n\r\npm.test(\"Correct validation message is returned\", function () {\r\n    var response = pm.response.json();\r\n    pm.expect(response.message).to.eql(\"Floor must be a positive integer\");\r\n});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"name\": \"Room Test\",\r\n    \"floor\": 0,\r\n    \"status\": \"Available\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/rooms",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "rooms"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Test Booking Validation",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status code is 400\", function () {\r\n    pm.response.to.have.status(400);\r\n});\r\n\r\npm.test(\"Invalid booking is rejected\", function () {\r\n    var response = pm.response.json();\r\n    pm.expect(response.success).to.eql(false);\r\n});\r\n\r\npm.test(\"Correct validation message is returned\", function () {\r\n    var response = pm.response.json();\r\n    pm.expect(response.message).to.eql(\"End date cannot be earlier than start date\");\r\n});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"doctor_id\": 1,\r\n    \"room_id\": 2,\r\n    \"start_date\": \"2026-11-25\",\r\n    \"end_date\": \"2026-11-20\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/bookings",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "bookings"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Test Invalid Booking Date",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status code is 400\", function () {\r\n    pm.response.to.have.status(400);\r\n});\r\n\r\npm.test(\"Invalid date is rejected\", function () {\r\n    var response = pm.response.json();\r\n    pm.expect(response.success).to.eql(false);\r\n});\r\n\r\npm.test(\"Correct validation message is returned\", function () {\r\n    var response = pm.response.json();\r\n    pm.expect(response.message).to.eql(\"Dates must be in YYYY-MM-DD format\");\r\n});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"doctor_id\": 1,\r\n    \"room_id\": 2,\r\n    \"start_date\": \"25-11-2026\",\r\n    \"end_date\": \"2026-11-28\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/bookings",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "bookings"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Search Rooms By Floor",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {\r\n    pm.response.to.have.status(200);\r\n});\r\n\r\npm.test(\"Rooms are returned successfully\", function () {\r\n    var response = pm.response.json();\r\n    pm.expect(response.success).to.eql(true);\r\n    pm.expect(response.rooms).to.be.an(\"array\");\r\n});\r\n\r\npm.test(\"All returned rooms belong to floor 2\", function () {\r\n    var response = pm.response.json();\r\n    response.rooms.forEach(function (room) {\r\n        pm.expect(room.floor).to.eql(2);\r\n    });\r\n});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/rooms?floor=2",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "rooms"
+          ],
+          "query": [
+            {
+              "key": "floor",
+              "value": "2"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Test Invalid Floor Search",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status code is 400\", function () {\r\n    pm.response.to.have.status(400);\r\n});\r\n\r\npm.test(\"Invalid floor is rejected\", function () {\r\n    var response = pm.response.json();\r\n    pm.expect(response.success).to.eql(false);\r\n});\r\n\r\npm.test(\"Correct validation message is returned\", function () {\r\n    var response = pm.response.json();\r\n    pm.expect(response.message).to.eql(\"Floor must be a positive integer\");\r\n});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/rooms?floor=0",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "rooms"
+          ],
+          "query": [
+            {
+              "key": "floor",
+              "value": "0"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get Available Rooms By Date",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "\r\npm.test(\"Status code is 200\", function () {\r\n    pm.response.to.have.status(200);\r\n});\r\n\r\npm.test(\"Response contains available rooms\", function () {\r\n    const response = pm.response.json();\r\n\r\n    pm.expect(response.success).to.eql(true);\r\n    pm.expect(response).to.have.property(\"availableRooms\");\r\n    pm.expect(response.availableRooms).to.be.an(\"array\");\r\n});\r\n\r\npm.test(\"Date and room count are valid\", function () {\r\n    const response = pm.response.json();\r\n\r\n    pm.expect(response.date).to.eql(\"2026-11-14\");\r\n    pm.expect(response.count).to.eql(5);\r\n});\r\n"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/rooms/available?date=2026-11-14",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "rooms",
+            "available"
+          ],
+          "query": [
+            {
+              "key": "date",
+              "value": "2026-11-14"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Add Doctor",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "\r\npm.test(\"Status code is 201\", function () {\r\n    pm.response.to.have.status(201);\r\n});\r\n\r\npm.test(\"Doctor creation successful\", function () {\r\n    const response = pm.response.json();\r\n\r\n    pm.expect(response.success).to.eql(true);\r\n    pm.expect(response.message).to.eql(\"Doctor added successfully\");\r\n});\r\n\r\npm.test(\"Doctor ID is returned\", function () {\r\n    const response = pm.response.json();\r\n\r\n    pm.expect(response.doctorId).to.be.a(\"number\");\r\n});\r\n"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"name\": \"Dr. Ananya Rao\",\r\n    \"specialization\": \"Neurology\",\r\n    \"phone\": \"9876543214\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/doctors",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "doctors"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Update Doctor",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "\r\npm.test(\"Status code is 200\", function () {\r\n    pm.response.to.have.status(200);\r\n});\r\n\r\npm.test(\"Doctor update successful\", function () {\r\n    const response = pm.response.json();\r\n\r\n    pm.expect(response.success).to.eql(true);\r\n    pm.expect(response.message).to.eql(\"Doctor updated successfully\");\r\n});\r\n\r\npm.test(\"Success message is returned\", function () {\r\n    const response = pm.response.json();\r\n\r\n    pm.expect(response).to.have.property(\"message\");\r\n});\r\n"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"name\": \"Dr. Ananya Rao\",\r\n    \"specialization\": \"Neurology\",\r\n    \"phone\": \"9876543215\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/doctors/5",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "doctors",
+            "5"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Update Room",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "\r\npm.test(\"Status code is 200\", function () {\r\n    pm.response.to.have.status(200);\r\n});\r\n\r\npm.test(\"Room update successful\", function () {\r\n    const response = pm.response.json();\r\n\r\n    pm.expect(response.success).to.eql(true);\r\n    pm.expect(response.message).to.eql(\"Room updated successfully\");\r\n});\r\n\r\npm.test(\"Success message is returned\", function () {\r\n    const response = pm.response.json();\r\n\r\n    pm.expect(response).to.have.property(\"message\");\r\n});\r\n"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"name\": \"Room 6\",\r\n    \"floor\": 2,\r\n    \"status\": \"Available\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:3000/rooms/7",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "rooms",
+            "7"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}

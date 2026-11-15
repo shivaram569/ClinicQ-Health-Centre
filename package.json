@@ -1,0 +1,20 @@
+{
+  "name": "clinicq",
+  "version": "1.0.0",
+  "description": "Health Centre Consultation Room Management System",
+  "main": "CONTRIBUTION_1_SERVER_AND_ROUTES/server.js",
+  "scripts": {
+    "start": "node CONTRIBUTION_1_SERVER_AND_ROUTES/server.js",
+    "dev": "nodemon CONTRIBUTION_1_SERVER_AND_ROUTES/server.js"
+  },
+  "dependencies": {
+    "express": "^5.1.0",
+    "sqlite3": "^6.0.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  },
+  "allowScripts": {
+    "sqlite3@6.0.1": true
+  }
+}
